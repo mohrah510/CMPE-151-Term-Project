@@ -1,0 +1,40 @@
+/* Background for main container */
+.root {
+    -fx-background-color: #F4F4F4;
+}
+
+/* Header label style */
+.header-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0055A2; /* SJSU Blue */
+    -fx-padding: 10 0 10 0;
+}
+
+/* Text field style */
+.text-field {
+    -fx-border-color: #939597; /* SJSU Gray */
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-prompt-text-fill: #939597;
+}
+
+/* Button style */
+.button {
+    -fx-background-color: #E5A823; /* SJSU Gold */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+}
+
+.table-view {
+    -fx-border-color: #939597; /* SJSU Gray */
+    -fx-border-radius: 5;
+}
+
+/* Table column headers */
+.table-column {
+    -fx-font-weight: bold;
+    -fx-text-fill: #0055A2; /* SJSU Blue */
+}

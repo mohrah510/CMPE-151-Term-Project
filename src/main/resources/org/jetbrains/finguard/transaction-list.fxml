@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.jetbrains.finguard.TransactionListController" alignment="CENTER" spacing="10">
+    <TableView fx:id="transactionTable" prefWidth="400">
+        <columns>
+            <TableColumn fx:id="transactionTypeColumn" text="Transaction Type" prefWidth="150" />
+            <TableColumn fx:id="amountColumn" text="Amount" prefWidth="100" />
+            <TableColumn fx:id="dateColumn" text="Date" prefWidth="150" />
+        </columns>
+    </TableView>
+</VBox>
