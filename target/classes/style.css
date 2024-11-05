@@ -1,40 +1,144 @@
-/* Background for main container */
+/* Global Styles and Backgrounds */
+/* ------------------------------------------------------------ */
+
+/* Applies a light gray background to the main container across pages */
 .root {
     -fx-background-color: #F4F4F4;
 }
 
-/* Header label style */
+/* Header Labels (Used across pages) */
+/* ------------------------------------------------------------ */
+
+/* General header label style for page titles */
 .header-label {
-    -fx-font-size: 20px;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-text-fill: #0055A2; /* SJSU Blue */
-    -fx-padding: 10 0 10 0;
+    -fx-text-fill: #0055A2;        /* SJSU Blue */
+    -fx-padding: 20 0 20 0;
+    -fx-alignment: center;
 }
 
-/* Text field style */
+/* Universal Button Styles (Applied to all buttons, including DatePicker buttons) */
+/* ------------------------------------------------------------ */
+
+.button, .arrow-button {
+    -fx-background-color: #0055A2; /* SJSU Blue */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 1, 1); /* Shadow for depth */
+    -fx-background-radius: 5;
+    -fx-transition: all 0.3s ease;
+}
+
+/* Button hover effect: switches to SJSU Gold */
+.button:hover, .arrow-button:hover {
+    -fx-background-color: #E5A823; /* SJSU Gold */
+    -fx-text-fill: white;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Enhanced Text Field Styles */
+/* ------------------------------------------------------------ */
+
 .text-field {
-    -fx-border-color: #939597; /* SJSU Gray */
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #939597;        /* SJSU Gray */
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-prompt-text-fill: #939597;    /* Placeholder text color */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 1, 1); /* Subtle shadow */
+    -fx-transition: all 0.3s ease;
+}
+
+/* Focused effect for text fields */
+.text-field:focused {
+    -fx-border-color: #0055A2;        /* SJSU Blue */
+    -fx-background-color: #F0F8FF;    /* Light blue background when focused */
+    -fx-effect: dropshadow(gaussian, rgba(0,85,162,0.3), 8, 0, 2, 2); /* Stronger shadow on focus */
+}
+
+/* Account Creation Page Styles (account.fxml) */
+/* ------------------------------------------------------------ */
+
+.date-picker {
+    -fx-background-color: #F4F4F4;
+    -fx-border-color: #939597;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+/* DatePicker Day Cell Hover Styles */
+.date-picker-popup .day-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-border-radius: 5;
+}
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #0055A2; /* SJSU Blue */
+    -fx-text-fill: white;
+    -fx-transition: all 0.3s ease;
+}
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: #E5A823; /* SJSU Gold */
+    -fx-text-fill: white;
+}
+
+/* Transaction Page Styles (transaction.fxml) */
+/* ------------------------------------------------------------ */
+
+.combo-box {
+    -fx-border-color: #939597;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+/* Styling for ComboBox popup list cells */
+.combo-box-popup .list-cell {
+    -fx-background-color: #F4F4F4; /* Light gray background */
+    -fx-text-fill: black;
+    -fx-padding: 5;
+}
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #0055A2; /* SJSU Blue on hover */
+    -fx-text-fill: white;
+}
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: #E5A823; /* SJSU Gold when selected */
+    -fx-text-fill: white;
+}
+
+/* Transaction List Page Styles (transaction-list.fxml) */
+/* ------------------------------------------------------------ */
+
+.table-view {
+    -fx-border-color: #939597;
+    -fx-border-radius: 5;
+}
+.table-column {
+    -fx-font-weight: bold;
+    -fx-text-fill: #0055A2;
+    -fx-alignment: CENTER-LEFT;
+}
+
+/* Transaction Type Page Styles (transaction-type.fxml) */
+/* ------------------------------------------------------------ */
+
+.text-field {
+    -fx-border-color: #939597;
     -fx-border-radius: 5;
     -fx-padding: 5;
     -fx-prompt-text-fill: #939597;
 }
 
-/* Button style */
-.button {
-    -fx-background-color: #E5A823; /* SJSU Gold */
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-border-radius: 5;
-    -fx-padding: 10;
-}
-
-.table-view {
-    -fx-border-color: #939597; /* SJSU Gray */
-    -fx-border-radius: 5;
-}
-
-/* Table column headers */
-.table-column {
-    -fx-font-weight: bold;
-    -fx-text-fill: #0055A2; /* SJSU Blue */
-}
+/* FinGuard Application Color Guide */
+/* ------------------------------------------------------------ */
+/*
+    SJSU Blue:      #0055A2
+    SJSU Gold:      #E5A823
+    SJSU Gray:      #939597
+*/

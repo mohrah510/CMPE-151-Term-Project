@@ -5,10 +5,9 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.jetbrains.finguard.TransactionController" alignment="CENTER" spacing="10">
-    <Label text="Add New Transaction" />
-    <TextField fx:id="accountIdField" promptText="Enter account ID" />
-    <TextField fx:id="transactionTypeIdField" promptText="Enter transaction type ID" />
-    <TextField fx:id="amountField" promptText="Enter amount" />
-    <Button text="Save Transaction" onAction="#handleSaveTransaction" />
+      stylesheets="@/style.css" fx:controller="org.jetbrains.finguard.TransactionTypeController" alignment="CENTER" spacing="10">
+    <Label text="Add New Transaction Type" styleClass="header-label" />
+    <TextField fx:id="typeNameField" promptText="Enter transaction type name" styleClass="text-field" />
+    <Button text="Save Transaction Type" onAction="#handleSaveTransactionType" styleClass="button" />
+    <Button text="Back to Home" onAction="#handleBackToHome" styleClass="button" />
 </VBox>

@@ -8,12 +8,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class TransactionController {
 
@@ -26,9 +30,20 @@ public class TransactionController {
     @FXML
     private TextField amountField;
 
+    @FXML
+    private DatePicker transactionDatePicker;  // New DatePicker for transaction date
+
     private final DatabaseHandler databaseHandler = new DatabaseHandler();
     private Map<String, Integer> accountNameToIdMap = new HashMap<>();
     private Map<String, Integer> transactionTypeToIdMap = new HashMap<>();
+
+    // Set of transaction types that increase the balance
+    private static final Set<String> positiveTransactionTypes = new HashSet<>();
+
+    static {
+        positiveTransactionTypes.add("Deposit");
+        positiveTransactionTypes.add("Salary");
+    }
 
     @FXML
     public void initialize() {
@@ -39,7 +54,6 @@ public class TransactionController {
     private void populateAccountNames() {
         ObservableList<String> accountNames = FXCollections.observableArrayList();
         for (Account account : databaseHandler.getAccounts()) {
-            System.out.println("Account Name: " + account.getName());  // Debugging line
             accountNames.add(account.getName());
             accountNameToIdMap.put(account.getName(), account.getId());
         }
@@ -49,7 +63,6 @@ public class TransactionController {
     private void populateTransactionTypes() {
         ObservableList<String> transactionTypes = FXCollections.observableArrayList();
         for (TransactionType type : databaseHandler.getTransactionTypes()) {
-            System.out.println("Transaction Type: " + type.getName());  // Debugging line
             transactionTypes.add(type.getName());
             transactionTypeToIdMap.put(type.getName(), type.getId());
         }
@@ -61,8 +74,9 @@ public class TransactionController {
         String accountName = accountNameComboBox.getValue();
         String transactionTypeName = transactionTypeComboBox.getValue();
         String amountText = amountField.getText();
+        LocalDate transactionDate = transactionDatePicker.getValue();
 
-        if (accountName == null || transactionTypeName == null || amountText.isEmpty()) {
+        if (accountName == null || transactionTypeName == null || amountText.isEmpty() || transactionDate == null) {
             showAlert("Input Error", "Please fill out all fields.");
             return;
         }
@@ -71,9 +85,15 @@ public class TransactionController {
             int accountId = accountNameToIdMap.get(accountName);
             int transactionTypeId = transactionTypeToIdMap.get(transactionTypeName);
             double amount = Double.parseDouble(amountText);
-            String currentDate = java.time.LocalDate.now().toString();
 
-            if (databaseHandler.insertTransaction(accountId, transactionTypeId, amount, currentDate)) {
+            // Check if the transaction type is positive; if not, make amount negative
+            if (!positiveTransactionTypes.contains(transactionTypeName)) {
+                amount = -amount;
+            }
+
+            String formattedDate = transactionDate.toString();  // Format LocalDate to string
+
+            if (databaseHandler.insertTransaction(accountId, transactionTypeId, amount, formattedDate)) {
                 showAlert("Success", "Transaction added successfully.");
                 navigateToTransactionList(accountId);  // Navigate to transaction list
             } else {
@@ -99,6 +119,25 @@ public class TransactionController {
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Navigation Error", "Failed to load the Transaction List page.");
+        }
+    }
+
+    @FXML
+    private void handleBackToHome() {
+        navigateToHomePage();
+    }
+
+    private void navigateToHomePage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/jetbrains/finguard/home-page.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) accountNameComboBox.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Home");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

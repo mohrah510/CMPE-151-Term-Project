@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.jetbrains.finguard.HomePageController" alignment="CENTER" spacing="20">
-    <Button fx:id="defineNewAccountButton" text="Define New Account" onAction="#handleDefineNewAccount" />
-    <Button text="Create A Transaction" onAction="#handleCreateTransaction" />
+      fx:controller="org.jetbrains.finguard.HomePageController" alignment="CENTER" spacing="20"
+      stylesheets="@/style.css" styleClass="root">
+
+    <!-- Header Label for welcome message -->
+    <Label text="Welcome to FinGuard!" styleClass="header-label" />
+
+    <!-- Buttons for navigation -->
+    <Button fx:id="defineNewAccountButton" text="Define New Account" onAction="#handleDefineNewAccount" styleClass="button" />
+    <Button text="Create A Transaction" onAction="#handleCreateTransaction" styleClass="button" />
 </VBox>

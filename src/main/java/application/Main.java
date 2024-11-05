@@ -12,8 +12,12 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/org/jetbrains/finguard/home-page.fxml"));
+            Scene scene = new Scene(root);
+            // Add the global stylesheet
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
             primaryStage.setTitle("FinGuard - Home");
-            primaryStage.setScene(new Scene(root));
+            primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

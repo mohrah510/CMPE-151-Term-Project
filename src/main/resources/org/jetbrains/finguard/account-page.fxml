@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.jetbrains.finguard.AccountPageController" alignment="CENTER" spacing="10">
-    <TableView fx:id="accountTable">
+      fx:controller="org.jetbrains.finguard.AccountPageController" alignment="CENTER" spacing="10"
+      stylesheets="@/style.css" styleClass="root">
+
+    <!-- Table View for Account Details -->
+    <TableView fx:id="accountTable" styleClass="table-view">
         <columns>
-            <TableColumn fx:id="nameColumn" text="Account Name" prefWidth="150"/>
-            <TableColumn fx:id="balanceColumn" text="Balance" prefWidth="100"/>
-            <TableColumn fx:id="createdAtColumn" text="Date Created" prefWidth="150"/>
+            <TableColumn fx:id="nameColumn" text="Account Name" prefWidth="150" styleClass="table-column" />
+            <TableColumn fx:id="balanceColumn" text="Balance" prefWidth="100" styleClass="table-column" />
+            <TableColumn fx:id="createdAtColumn" text="Date Created" prefWidth="150" styleClass="table-column" />
         </columns>
     </TableView>
+
+    <!-- Back button for navigation -->
+    <Button text="Back to Home" onAction="#handleBackToHome" styleClass="button" />
 </VBox>

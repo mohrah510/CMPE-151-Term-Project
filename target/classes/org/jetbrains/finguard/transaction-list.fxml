@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.jetbrains.finguard.TransactionListController" alignment="CENTER" spacing="10">
-    <TableView fx:id="transactionTable" prefWidth="400">
+      stylesheets="@/style.css" fx:controller="org.jetbrains.finguard.TransactionListController" alignment="CENTER" spacing="10">
+    <Label text="Transaction List" styleClass="header-label" />
+    <TableView fx:id="transactionTable" prefWidth="600" styleClass="table-view">
         <columns>
-            <TableColumn fx:id="transactionTypeColumn" text="Transaction Type" prefWidth="150" />
-            <TableColumn fx:id="amountColumn" text="Amount" prefWidth="100" />
-            <TableColumn fx:id="dateColumn" text="Date" prefWidth="150" />
+            <TableColumn fx:id="transactionTypeColumn" text="Transaction Type" prefWidth="120" styleClass="table-column" />
+            <TableColumn fx:id="amountColumn" text="Amount" prefWidth="100" styleClass="table-column" />
+            <TableColumn fx:id="previousBalanceColumn" text="Previous Balance" prefWidth="120" styleClass="table-column" />
+            <TableColumn fx:id="currentBalanceColumn" text="Current Balance" prefWidth="120" styleClass="table-column" />
+            <TableColumn fx:id="dateColumn" text="Date" prefWidth="150" styleClass="table-column" />
         </columns>
     </TableView>
+    <Button text="Back to Home" onAction="#handleBackToHome" styleClass="button" />
 </VBox>

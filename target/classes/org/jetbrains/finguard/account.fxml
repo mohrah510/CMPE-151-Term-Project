@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.jetbrains.finguard.AccountController" alignment="CENTER" spacing="10">
+      fx:controller="org.jetbrains.finguard.AccountController" alignment="CENTER" spacing="10"
+      stylesheets="@/style.css" styleClass="root">
+
+    <!-- Header Label for Create New Account -->
     <Label text="Create New Account" styleClass="header-label" />
+
+    <!-- Input fields for account details -->
     <TextField fx:id="accountNameField" promptText="Enter account name" styleClass="text-field" />
     <TextField fx:id="balanceField" promptText="Enter balance" styleClass="text-field" />
+    <DatePicker fx:id="createdAtDatePicker" promptText="Select creation date" /> <!-- Styled DatePicker -->
+
+    <!-- Buttons for Save and Back Navigation -->
     <Button text="Save Account" onAction="#handleSaveAccount" styleClass="button" />
+    <Button text="Back to Home" onAction="#handleBackToHome" styleClass="button" />
 </VBox>
